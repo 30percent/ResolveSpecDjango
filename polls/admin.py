@@ -13,4 +13,5 @@ class PollAdmin(admin.ModelAdmin):
     inlines = [ChoiceInline] # included tables for editing. (Req Foreign Key)
     list_display = ('question', 'pub_date', "was_published_recently") #decides what's display in admin list view
     list_filter = ['pub_date']
+
 admin.site.register(Poll, PollAdmin)

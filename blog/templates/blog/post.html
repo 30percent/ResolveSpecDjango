@@ -1,0 +1,17 @@
+{% extends "blog/bbase.html" %}
+
+{% block content %}
+	<article>
+		<header>
+			<h1>{{ post.title }}</h1>
+			<p> Posted on <time datetime="{{ post.created|date:'c'}}">
+			{{ post.created|date }}
+			</time>
+			</p>
+		</header>
+		<p class="description">
+			<i>{{ post.description }}</i>
+		</p>
+		{{post.content|safe}}
+	</article>
+{% endblock %}

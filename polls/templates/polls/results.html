@@ -1,3 +1,9 @@
+{% load staticfiles %}
+<html>
+<head>
+<title>Poll Results</title>
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+</head><body>
 <h1>{{ poll.question }}</h1>
 
 <ul>
@@ -7,3 +13,5 @@
 </ul>
 
 <a href="{% url 'polls:detail' poll.id %}">Vote again?</a>
+</body>
+</html>
