@@ -1,0 +1,6 @@
+IMPORTANT NOTES:
+
+http://jsfiddle.net/miqdad/Qy6Sj/1/
+http://od-eon.com/blogs/stefan/integrating-pygments-django/
+http://pygments.org/docs/quickstart/#
+http://www.creativebloq.com/netmag/get-started-django-7132932
