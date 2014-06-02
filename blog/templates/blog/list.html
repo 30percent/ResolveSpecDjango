@@ -1,38 +1,55 @@
 {% extends "blog/bbase.html" %}
+{% block scripts %}
+{% load staticfiles %}
+<!--<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>-->
+<script type='text/javascript' src="{% static 'blog/scripts/jquery.min.js' %}"></script>
+<script type='text/javascript'>
+$(window).load(function(){
+$(".button").click(function(){
+    var t = "[data-boxiter=" + $(this).attr('data-buttoniter') + "]";
+    if($(this).html() == "-"){
+        $(this).html("+");
+    }
+    else{
+        $(this).html("-");
+    }
+    $(t).slideToggle();
+});
+});
+</script>
+{% endblock %}
 
 {% block content %}
-	<div class="main">
-		<!-- Posts -->
-		<ul>
-			{% for post in posts %}
-				<div class="title"><a href="{% url 'blog:posts' post.slug%}">{{ post.title }}</a></div>
-				<ul>
-				<div class="time">{{ post.created }}</div>
-				{% autoescape off %}
-				<div class="body">{{ post.content|linebreaks }}</div>
-				{% endautoescape %}
-				</ul>
-			{% endfor %}
-		</ul>
-		
-		<!-- Next/Prev page links -->
-		{% if is_paginated %}
-		<div class="pagination" style="margin-top: 20px; margin-left: -0px; ">
-			<span class="step-links">
-				{% if page_obj.has_previous %}
-					<a href= "?page={{ page_obj.previous_page_number }}">newer entries &lt;&lt; </a>
-				{% endif %}
-				
-				<span class="current">
-					&nbsp;Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-				</span>
-				
-				{% if page_obj.has_next %}
-					<a href="?page={{ page_obj.next_page_number }}">&gt;&gt; older entries</a>
-				{% endif %}
-			</span>
+<!-- Posts -->
+{% for post in posts %}
+	<div class="window">
+		<div class="title">
+			<a href="{% url 'blog:posts' post.slug%}">{{ post.title }}</a> <div class="button" data-buttoniter="{{ post.id }}">-</div>
 		</div>
-		{% endif %}
-		<!-- End Posts -->
+		<div class="time">{{ post.created }}</div>
+		<div class="box" data-boxiter="{{ post.id }}">
+		{% autoescape off %} <div class="body">{{ post.content|linebreaks }}</div>{% endautoescape %}
+		</div>
 	</div>
+{% endfor %}
+<!-- End Posts -->
+
+<!-- Next/Prev page links -->
+{% if is_paginated %}
+<div class="pagination" style="margin-top: 20px; margin-left: -0px; ">
+	<span class="step-links">
+		{% if page_obj.has_previous %}
+			<a href= "?page={{ page_obj.previous_page_number }}">newer entries &lt;&lt; </a>
+		{% endif %}
+		
+		<span class="current">
+			&nbsp;Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+		</span>
+		
+		{% if page_obj.has_next %}
+			<a href="?page={{ page_obj.next_page_number }}">&gt;&gt; older entries</a>
+		{% endif %}
+	</span>
+</div>
+{% endif %}
 {% endblock %}

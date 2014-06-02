@@ -1,0 +1,25 @@
+.window{
+    width:400px;
+    border:solid 1px;
+}
+
+.title{
+	position:relative;
+    background: #FEFEFE;
+    height: 25px;
+    width: 100%;
+}
+.button{
+	position:absolute;
+	top: 0;
+	right:0;
+    border:solid 1px;
+    width: 25px;
+    height: 23px;
+    float:right;
+    cursor:pointer;
+}
+.box{
+    height: 250px;
+    background: #DFDFDF;
+}
