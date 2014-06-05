@@ -3,7 +3,7 @@ from polls.models import Choice, Poll
 
 class ChoiceInline(admin.TabularInline):
     model = Choice
-    extra = 1
+    extra = 2
 
 class PollAdmin(admin.ModelAdmin):
     fieldsets = [

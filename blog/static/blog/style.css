@@ -1,5 +1,57 @@
+#menu{
+	padding: 0 20px 20px 20px;
+	margin-left: 230px;
+}
+
+body.framed{
+	height: auto;
+	overflow:hidden;
+}
+
+#main iframe{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+}
+
+#container{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+#content{
+	overflow: auto;
+	height: 100%;
+}
+
+#content #sidebar{
+	position: relative;
+	float: left;
+	left: 0px;
+	height: 100%;
+	width: 300px;
+}
+
+#content #main{
+	position: relative;
+	padding: 0 20px 20px 20px;
+	left: 240px;
+	width: 80%;
+	height: 100%;
+	min-width: 200px;
+}
+
 .window{
-    width:400px;
+    width:800px;
     border:solid 1px;
 }
 
@@ -20,6 +72,5 @@
     cursor:pointer;
 }
 .box{
-    height: 250px;
     background: #DFDFDF;
 }

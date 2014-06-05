@@ -6,7 +6,15 @@ from django.views import generic
 from blog.models import *
 
 class IndexView(generic.ListView):
-    template_name = 'blog/list.html'
+    template_name = 'blog/list2.html'
+    context_object_name = 'posts'
+    paginate_by = 2
+
+    def get_queryset(self):
+        return Post.objects.filter(published=True)
+
+class List(generic.ListView):
+    template_name = 'blog/tree.html'
     context_object_name = 'posts'
     paginate_by = 2
 
@@ -26,7 +34,7 @@ def index(request):
     except (InvalidPage,EmptyPage):
         posts = paginator.page(paginator.num_pages)
 
-    return render_to_response("blog/list.html", dict(posts=posts, user=request.user))
+    return render_to_response("blog/tree.html", dict(posts=posts, user=request.user))
 
 class PostView(generic.DetailView):
     model = Post

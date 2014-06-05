@@ -1,25 +1,6 @@
 {% extends "blog/bbase.html" %}
-{% block scripts %}
 {% load staticfiles %}
-<!--<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>-->
-<script type='text/javascript' src="{% static 'blog/scripts/jquery.min.js' %}"></script>
-<script type='text/javascript'>
-$(window).load(function(){
-$(".button").click(function(){
-    var t = "[data-boxiter=" + $(this).attr('data-buttoniter') + "]";
-    if($(this).html() == "-"){
-        $(this).html("+");
-    }
-    else{
-        $(this).html("-");
-    }
-    $(t).slideToggle();
-});
-});
-</script>
-{% endblock %}
-
-{% block content %}
+{% block main %}
 <!-- Posts -->
 {% for post in posts %}
 	<div class="window">
