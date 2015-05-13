@@ -1,0 +1,51 @@
+{% extends "manual/bbase.html" %}
+{% load staticfiles %}
+{% block main %}
+
+<iframe src="list/" name="listframe" id="listframe" frameborder="0" marginwidth="0" marginheight="0" scrolling="auto" onload="" ></iframe>
+
+{% endblock %}
+
+{% block sidebar %} 
+<div id="treeViewDiv">
+</div>
+
+<script>
+$(function (){
+	
+	
+	
+	$("#treeViewDiv").jstree({ 'core' : {
+		'data' : [
+		{
+		'text' : 'Facilities',
+		'a_attr' : {'href' : "{% url 'manual:list' %}"},
+		'state' : {
+			'opened' : true
+			},
+		'children' : [
+			{% for post in posts %}
+			{
+			'text' : "{{post.title}}",
+			'a_attr' : {'href' : "{% url 'manual:posts' post.slug%}"},
+			'children' : [],
+			'state' : {
+			'opened' : false,
+			'selected' : false
+			}
+			},
+			{% endfor %}
+		]
+		}
+		]
+		}
+	})
+	.bind('select_node.jstree', function(e, data) {
+		var href = data.node.a_attr.href;
+		if(href !== undefined){
+			window.top.frames['listframe'].location = href;
+		}
+		});
+})
+</script>
+{% endblock %}

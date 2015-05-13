@@ -1,16 +1,24 @@
-from django.conf.urls import patterns, include, url
+"""ResolveSpecDjango URL Configuration
 
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/1.8/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
+Including another URLconf
+    1. Add an import:  from manual import urls as manual_urls
+    2. Add a URL to urlpatterns:  url(r'^manual/', include(manual_urls))
+"""
+from django.conf.urls import include, url
 from django.contrib import admin
-admin.autodiscover()
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'ResolveSpecDjango.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^polls/', include('polls.urls', namespace="polls")),
-    url(r'^blog/', include('blog.urls', namespace="blog")),
-    url(r'^plot/', include('treeplot.urls', namespace="treeplot")),
-    #url(r'^$', include('polls.urls', namespace="polls")),
-)
+urlpatterns = [
+                       url(r'^admin/', include(admin.site.urls)),
+                       url(r'^manual/', include('manual.urls', namespace="manual")),
+                       url(r'^plot/',
+                           include('treeplot.urls', namespace="treeplot")),
+]

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>{% block title %}Title{% endblock %}</title>
+{% load staticfiles %}
+{% include 'manual/scripts.html' %}
+{% block scripts %} {% endblock %}
+</head>
+<body>
+	<div id="container">
+		<!-- Container -->
+		<div id="menu">
+			{% block nav-global %}
+				<!-- MENU -->
+				<h3>Title</h3>
+				{% if user.is_staff %}
+				<a href="{% url 'admin:index' %}">Admin</a>
+				<a href="{% url 'admin:manual_post_add' %}">Add Post</a>
+				{% endif %}
+				<!-- End MENU -->
+			{% endblock %}
+		</div>
+		<div id="content">
+			<!-- Content -->
+			<div id="sidebar"> {% block sidebar %} {% endblock%}</div>
+			<div id="main">
+				{% block main %}{% endblock %}
+			</div>
+			<!-- End Content -->
+		</div>
+		<!-- End Container -->
+	</div>
+</body></html>
