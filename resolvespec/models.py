@@ -6,7 +6,7 @@ from django.db import models
 class Node(models.Model):
     name = models.CharField(max_length=200)
     parent = models.ManyToManyField(
-        "self", related_name="children", blank=True, null=True)
+        "self", related_name="children", blank=True)
     oneormany = models.BooleanField(default=False)
 
     def __unicode__(self):
